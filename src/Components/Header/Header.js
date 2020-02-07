@@ -1,10 +1,10 @@
+import { NewsFeed } from "../NewsFeed/NewsFeed";
 const SOURCES_URL = "https://newsapi.org/v2/sources";
 
 export class Header {
   constructor(root = document.getElementById("root")) {
     this._root = root;
     this._sources = [];
-    this.init();
   }
 
   async fetchSources() {
@@ -29,9 +29,16 @@ export class Header {
 
   async render() {
     const navBar = document.createElement("nav");
+    navBar.classList.add(
+      "navbar",
+      "navbar-expand-lg",
+      "navbar-light",
+      "bg-primary"
+    );
 
     const sourceSelect = document.createElement("select");
     sourceSelect.id = "select";
+    sourceSelect.classList.add("form-control", "form-control-lg");
 
     this._sources.map(src =>
       this.renderOptions(src.id, src.name, sourceSelect)
@@ -45,9 +52,5 @@ export class Header {
   async init() {
     await this.fetchSources();
     this.render();
-
-    const select = document.getElementById("select");
-
-    select.addEventListener("change", e => console.log(e.currentTarget.value));
   }
 }

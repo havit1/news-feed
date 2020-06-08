@@ -17,3 +17,5 @@ async function render() {
     newsFeed.updateNews(e.currentTarget.value);
   });
 }
+
+//test

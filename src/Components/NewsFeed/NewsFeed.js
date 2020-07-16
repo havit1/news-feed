@@ -16,7 +16,7 @@ export class NewsFeed {
     });
     const data = await news.json();
 
-    this._news = data;
+    this._news = data
   }
 
   render() {
